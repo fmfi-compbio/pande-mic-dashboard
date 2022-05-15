@@ -1,0 +1,187 @@
+# https://www.cogconsortium.uk/wp-content/uploads/2020/12/Report-1_COG-UK_20-December-2020_SARS-CoV-2-Mutations_final_updated2.pdf
+# https://www.nytimes.com/interactive/2021/health/coronavirus-variant-tracker.html
+# https://www.ecdc.europa.eu/en/covid-19/variants-concern
+# https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/
+# https://github.com/phe-genomics/variant_definitions
+# https://outbreak.info/compare-lineages?pango=AY.3
+# https://outbreak.info/situation-reports?pango=BA.1&loc=SVK&loc=GBR&loc=CZE&selected=SVK&overlay=false
+# https://outbreak.info/location-reports?loc=SVK&pango=AY.4&selected=AY.4
+# https://outbreak.info/situation-reports?pango&muts=S%3A%0AQ613H&loc=SVK&loc=GBR&loc=CZE&selected=SVK&overlay=false
+# https://virus.img.cas.cz/
+# https://cov-spectrum.ethz.ch/explore/Slovakia/AllSamples/from=2021-11-01&to=2021-12-29/variants?pangoLineage=BA.1*
+
+# UK B.1.1.7 ALPHA 20B/501Y.V1 (A23063T spike N501Y)
+# https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563
+UK 4 C3267T C5388A T6954C A23063T C23271A C23604A C23709T T24506G G24914C C27972T G28048T A28111G C28977T GTCTGGTTTT11287G ATACATG21764A TTTA21990T G28280C A28281T T28282A
+
+# czech strain B.1.258
+CZ 2 G12988T G15598A G18028T T24910C T26972C ATACATG21764A
+
+# eu2 B.1.160
+EU2 2 G9526T G15766T A16889G G17019T G22992A T26876C
+
+# eu1  B.1.177
+EU1 2 T445C C6286T G21255C C22227T C26801G C28932T G29645T 
+
+# south africa 20H/501Y.V2 = B.1.351 BETA
+# (briti maju z toho 23063 = S N501Y a delecio 11287;
+# C23664T=A701V
+South.Afr 3 G174T G5230T C5100T G23012A A21801C A23063T C28253T C23664T ACTTTACTTG22280A GTCTGGTTTT11287G
+
+# brazil 20J/501Y.V3 P.1 GAMMA
+# (21614 S L18F is recurrent mutaion, also present in ukba-716,717 eu1 and other eu1)
+BrazilP1 2 T733C C2749T C3828T A5648C C12778T C13860T G17259T C21614T C21621A
+
+# another brazil P.2 ZETA
+# 20B/S.484K (=23012) - beware 28975 is also in EU2; also 23012, 28253 overlap with s.afr, 29754 in ukba318
+BrazilP2 3 T10667G C11824T A12964G G23012A C28253T G28628T G28975T C29754T
+
+# ukba-318,409,412
+# B.1.1.170 C2062T C5184A C13887T C18687T 
+UKBA318 2 G12824A C25777T G26062T C29754T
+
+# only E484K G23012A
+E484K 1 G23012A
+
+# only Q613H G23401T of interest with delta
+# Q613H 1 G23401T
+
+# only Q617H under monitoring with delta
+# Q677H 1 G23593C
+
+# California S  L452R B.1.427, B.1.429 EPSILON
+California 2 G17014T G21600T G22018T T22917G C26681T A28272T C29362T
+
+# B.1.525 ETA Nigeria E484K ΔH69/ΔV70 deletion N439K Y453F F888L A67V
+Nigeria 2 C1498T A1807G G2659A C6285T T8593C C14407T A21717G C21762T T24224C
+
+# B.1.526 IOTA New York https://www.medrxiv.org/content/10.1101/2021.02.26.21251868v1 E484K  L5F, T95I, D253G, D614G, and A701V (sometimes S477N )
+# https://www.biorxiv.org/content/10.1101/2021.02.14.431043v2.full.pdf
+NY 3 T9867C C25517T C27925T A20262G C21575T C21846T A22320G C23664T C28869T
+
+# india  E484Q=G23012C(only in kappa) and L452R=U22917G 
+# https://github.com/cov-lineages/pango-designation/issues/38
+# https://www.biorxiv.org/content/10.1101/2021.04.22.440932v3.full
+# IndiaB.1.617 2 G210T T22917G C23604G C25469T T27638C G28881T G29402T G29742T
+
+# B.1.617.2 = DELTA 
+# https://www.medrxiv.org/content/10.1101/2021.08.05.21261642v1
+# added B.1.617 muts, orignally only delta-specific C22995A T26767C C27752T A28461G
+Delta 4 G210T C21618G GAGTTCA22028G T22917G C22995A C23604G G24410A C25469T T26767C C27752T T27638C AGATTTC28247A A28461G G28881T G29402T G29742T
+
+start_sub
+AY.43 1 A28299T
+#VOI with delta
+Q613H 1 G23401T
+#under monitoring with delta
+Q677H 1 G23593C
+# Delta plus = AY.1, AY.2 K417N = G22813T (also present K417T A22812C AAG -> ACG) nepal
+# https://github.com/cov-lineages/pango-designation/issues/107
+# https://github.com/cov-lineages/pango-designation/issues/95
+K417N 1 G22813T
+end_sub
+
+
+# AY.3 combination of ORF1a:T3646A and ORF1a:I3731V A11456G (only the second is specific?)
+# https://github.com/cov-lineages/pango-designation/issues/121
+# https://outbreak.info/situation-reports?pango=AY.3&selected=CHE&loc=USA&loc=SVK&loc=DEU&loc=GBR&loc=CZE&loc=CHE&loc=AUT
+# https://outbreak.info/location-reports?loc=CZE&pango=AY.9&selected=AY.9
+# AY.4-AY10
+# https://github.com/cov-lineages/pango-designation/issues/180
+# AY.12
+# https://github.com/cov-lineages/pango-designation/issues/170
+# problems with sublinages
+# https://github.com/cov-lineages/pango-designation/issues/186
+# AY.4.2
+# https://github.com/cov-lineages/pango-designation/issues/223
+# but A222V also in AY.9 at least in ours
+# Lineage deriving from AY.4 with extra Spike mutations S:Y145H=T21995C and S:A222V=C22227T
+# AY.26 growing in CZ A27345T (Orf6:K48N) mozno aj S:V1264L G25352T
+# CZ also reports T95I=C21846T
+# AY.43 defined by N:9L =  A28299T, ORF1b:829I
+# https://github.com/cov-lineages/pango-designation/issues/240
+
+
+# https://github.com/cov-lineages/pango-designation/issues/17
+# M F28L; N S187L, Q418H; Orf1b G1363R, P1936H; S W152L, E484K, G769V
+JapanR.1 3 C14340T G17551A C18877T A19167G C19274A G22017T G23012A G23868T T26604C 
+
+# rare are C2416T G8371T 25563 medium
+SK-BMC5 6 C241T C2416T C3037T G8371T C14408T A23403G G25563T
+
+# P.3 THETA The Philippines E484K, N501Y, P681H, 141-143del B.1.1.28.3
+PhilippinesP.3 4 A4926G C7564A C8139T G9203A C11308A C12049T C17074T C17339T G23012A A23063T T23341C C23604A T24187A G24836A C24863T A27897C C29724T
+
+# B.1.620 S477N, E484K Cameroon / Lithuania
+# https://github.com/cov-lineages/pango-designation/issues/54
+CameronB.1.620 4 G6236A C1473T C15324T G17110T T20049C C21638T T21939C C22295T C22498T G22992A G23012A A23403G A23416T C23604A C24642T C28932T
+
+# B.1.621 MU Colombia R346K, E484K, N501Y
+# https://github.com/cov-lineages/pango-designation/issues/57
+# https://www.medrxiv.org/content/10.1101/2021.05.08.21256619v1
+# Spike T95I Y144T R346K E484K N501Y P681H; del 26158-28162 4bp
+ColombiaB.1.621 9 A3428G C4878T A11451G C14408T C17491T G25563T A27924C C28005T C28093T C21846T T21992A A21993C A21996C C21997T G22599A G23012A A23063T C23604A TGTTA26157T 
+# missing in our sample: A27924C T21992A  A21996C C21997T
+# insertion should be at 21998 we have T21990TTAC
+
+# C.37 LAMBDA Alias of B.1.1.1.37 G75V, T76I, L452Q, F490S, T859N Peru/Chile
+# https://github.com/cov-lineages/pango-designation/issues/52
+# some deletion in Spike at aa 246
+PeruC37 2 C7124T T7424G T22917A C24138A C29311T
+
+# B.1.616 france? detection problems? still active?
+
+
+#C.36.3
+# p.65 https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/990339/Variants_of_Concern_VOC_Technical_Briefing_13_England.pdf
+# S S12F, del69-70, W152R, R346S, L452R, D614G, Q677H, A899S
+C36.3 3 G9203A C11325T G16549T T22016A A22600C G24257T T26767C ATACATG21764A 
+
+
+#  C.1.2. = B.1.1.1.1.2
+# https://cov-lineages.org/lineage.html?lineage=C.1.2
+# https://github.com/cov-lineages/pango-designation/issues/139
+# add more muts!!
+C.1.2 4 G569A C2485T C5175T A7699G T9867C C13019T C18747T C21636T G21969T
+
+
+# B.1.1.529 + BA.*
+# https://github.com/cov-lineages/pango-designation/issues/343
+# https://github.com/cov-lineages/pango-designation/issues/361
+# https://github.com/cov-lineages/pango-designation/issues/367
+# G6513-, T6514-, T6515-,
+# T11285- T11286- G11287- T11288- C11289- T11290- G11291- G11292- T11293-
+# T21765- A21766- C21767- A21768- T21769- G21770- C21846T G21987- T21988- G21989- T21990- T21991- T21992- A21993- T21994- T21995- A22194- T22195- T22196-
+# G28362- A28363- G28364- A28365- A28366- C28367- G28368- C28369- A28370-
+# S: A67V, H69-, V70-, T95I, G142-, V143-, Y144-, Y145D, N211-, L212I, G339D, S371L, S373P, K417N, N440K, G446S, S477N, T478K, E484A, Q493R, G496S, Q498R, T547K, H655Y, N679K, P681H, N764K, D796Y, N856K, Q954H, N969K, L981F
+Omicron 7 A2832G T5386G G8393A C10029T C10449A A11537G T13195C C15240T A18163G C21762T  G22578A T22673C C22674T T22679C G22813T T22882G G22898A G22992A C22995A A23013C A23040G G23048A A23055G A23063T C23202A C23525T T23599G C23604A C23854A G23948T C24130A A24424T T24469A C24503T C25000T C25584T C26270T A26530G C26577G G26709A A27259C C27807T A28271T C28311T 
+
+start_sub
+#https://www.biorxiv.org/content/10.1101/2022.02.11.480029v1
+
+# R346K
+#BA.1.1 1 G22599A
+
+# T19I, L24del (deletion), P25del, P26del, A27S, V213G, T376A, R408S 
+#BA.2 
+
+# R216E, S371L, G496S, T547K, N856K, L981F
+#BA.1
+
+# A67V, ins (insertion), 214EP, R216E, S371L, G496S, T547K, N856K, L981F.
+#BA.1.1 and BA.1 
+
+#BA.2_Nextstrain_clade_21L 1 C21618T C22792T 
+#also C8991T C25810T T29772G C25416T ?
+
+#BA.1_Nextstrain_clade_21K 6 A2832G T5386G G8393A A11537G T13195C G23048A C23202A C24130A C24503T
+
+#https://github.com/cov-lineages/pango-designation/issues/361
+BA.1 5 A2832G T5386G G8393A G11287T A11537G C15240T C21762T C21846T T22673C C22674T G22898A G23048A C23202A C24130A C24503T A26530G
+BA.2 5 T670G C2790T G4184A C4321T C9344T A9424G C9534T C9866T C1198T G10447A T11296G C12880T C15714T C17410T C19955T A20055G C21618T T22200G C22674T A22688G G22775A A22786T C26060T C26858T G27382C A27383T T27384C A29510C
+ 
+
+
+end_sub
+
+# french B.1.640.2 (B.1.640 from Congo under monitoring)

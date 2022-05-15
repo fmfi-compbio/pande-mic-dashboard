@@ -1,0 +1,4 @@
+__pycache__/
+.snakemake/
+static/img*
+*run*.sh

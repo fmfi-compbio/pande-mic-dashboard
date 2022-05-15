@@ -1,0 +1,64 @@
+##############################
+# general pipeline settings
+##############################
+
+
+#path to scripts directory (pipeline root dir)
+scripts_dir: <anything>
+
+#where to store pipeline output
+output_dir: <anything>
+
+# # of barcodes
+barcodes: 96
+
+# minimal number of new batches needed to run the pipeline
+min_batches: 1
+# maximal number of batches to be processed at one time
+max_batches: 4
+# number of files in a batch
+batch_size: 10
+
+#maximal number of cores provided for the snakemake pipeline, NOTE: recomm.: max_batches =< cores
+cores: 4
+
+clear_annotated: True
+#store_batches: False
+
+##########################################
+# settings for rules and specific scripts
+##########################################
+
+#basecalling
+input_path: <anything>
+
+#where to store temporary directories with linked files (batches to be processed)
+batch_path: <anything>
+
+#deepnano blitz params
+deepnanoblitz_path: <anything>
+blitz_beam_size: 5
+blitz_threads: 1
+blitz_network_type: 48
+
+#debarcoding
+guppy_setup_path: <anything>
+#guppy_arrangements_files: barcode_arrs_nb96.cfg
+guppy_config: configuration.cfg
+guppy_barcode_kits: EXP-NBD196
+guppy_threads: 1
+
+#alignment
+reference_genome: <anything>
+
+#base counting script
+alignment_low_cutoff: 50 
+
+#find SNPs
+coverage_threshold: 50
+coverage_fraction: 0.5
+
+#variant calling
+mut_file: <anything>
+variant_calling_threshold: 50
+
