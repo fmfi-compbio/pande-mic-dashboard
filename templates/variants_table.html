@@ -1,0 +1,50 @@
+<div class = "table table-striped">
+    <table>
+        <thead>
+            <tr>
+            <th scope="col">variant</th>
+            <th scope="col">#samples</th>
+            <th scope="col">samples</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for variant in variants %}
+                <tr>
+                <td>{{variant}}</td> 
+                <td>{{variants[variant].count}}</td>
+                <td>{% for sample in variants[variant].barcodes %} {{sample}} {{ ", " if not loop.last else "" }} {% endfor %}</td>
+                </tr>
+                
+                    
+                        {% for subvariant in variants[variant].children %}
+                        <tr>
+                            <td class="font-italic">{{subvariant}}</td> 
+                            <td class="font-italic">{{variants[variant].children[subvariant].count}}</td>
+                            <td class="font-italic">{% for sample in variants[variant].children[subvariant].barcodes %} {{sample}} {{ ", " if not loop.last else "" }} {% endfor %}</td>
+                        </tr>
+                        {% endfor %}
+                    
+                
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  
+  
+    <script>
+            
+        //variants
+        createVariants = (variants, level) => {
+            return variants.flatMap((variant) => [
+                `${'---'.repeat(level)}variant: ${variant.name} (${variant.mutations.map(mutation=>mutation.from+mutation.position+mutation.to).join(", ")})`,
+                ...this.createVariants(variant.subs, level+1)
+            ]);
+        }
+  
+        createVariantWithpTags = (variants) => {
+            return this.createVariants(variants, 0).map(i => '<p>'+i+'</p>').join("");
+        } 
+  
+    </script>
+
+</div>

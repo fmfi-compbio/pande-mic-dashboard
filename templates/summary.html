@@ -1,0 +1,44 @@
+<div class="row">
+          <div class="col-lg-12 col-md-12" id="read_depth_plotly">
+              loading...
+          </div>
+          <div class="col-lg-4 col-md-4" id="mapped_and_processed_reads">
+            loading...
+            </div>
+          <div class="col-lg-4 col-md-4" id="barcode_amplicon">
+          loading...
+      </div>
+
+  </div>
+
+
+  <script>
+
+      function load_graphs(){
+      //important: async:false - maplotlib cannot generate multiple graphs in parallel
+            
+            $.ajax({
+                url:"{{ url_for('mapped_and_processed_reads') }}",
+                async:false 
+                }).done(function (reply) {
+                $('#mapped_and_processed_reads').html('<img class="graph" src="'+reply+'" />');
+            });
+
+            $.ajax({
+                url: "{{ url_for('read_depth_plotly')}}",
+                async:false,
+                type: 'GET'
+            }).done(function (reply) {
+                $('#read_depth_plotly').html(reply);
+            });
+
+            $.ajax({
+                url:"{{ url_for('barcode_amplicon_graph') }}",
+                async:false
+                }).done(function (reply) {
+                $('#barcode_amplicon').html('<img class="graph" src="'+reply+'" />');
+            });
+      }
+
+      load_graphs()
+  </script>

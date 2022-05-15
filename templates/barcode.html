@@ -1,0 +1,39 @@
+
+<div class="card mb-3" id=sample_{{barcode}} style="color:{{colors[barcode]}}; border-color:{{colors[barcode]}}; font-weight:bold; border-width:4px;">
+    <a id=sample_{{barcode}}_link class="collapsed no_underline" data-bs-toggle="collapse" href="#{{barcode}}" aria-expanded="false" aria-controls="{{barcode}}">
+<div class="card-header">{{barcode}} &nbsp; | &nbsp; {{ processed_reads[barcode] }} processed reads &nbsp; | {{avg_read_lengths[barcode]}} avg read length | &nbsp; {{ mapped_reads[barcode] }} mapped reads &nbsp; | <span id="variant{{barcode}}"></span> &nbsp;</div>
+</a>
+<div id="{{barcode}}" class="collapse" role="tabcard" aria-labelledby="{{barcode}}"> 
+    <div class="card-body text-dark">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 sol-xs-12" id="read_depth_{{barcode}}">loading...</div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 sol-xs-12">
+          <span id="variant_add_inf{{barcode}}"></span>
+          <span id="all_snps{{barcode}}"></span>
+        </div>
+
+        <script>
+
+        $("#sample_{{barcode}}_link").click(function(e) {
+            e.preventDefault();
+            if (load_barcode["{{barcode}}"] == 1){
+              //console.log("{{barcode}}")
+              load_read_depth("{{barcode}}")
+              load_variant_data("{{barcode}}")
+              load_barcode["{{barcode}}"] = 0
+            }
+            else{
+              load_barcode["{{barcode}}"] = 1
+            }
+        })
+
+        load_variant_data("{{barcode}}");
+        load_barcode["{{barcode}}"] = 1
+
+        </script>
+
+      </div>
+    </div>
+</div>
+</div>

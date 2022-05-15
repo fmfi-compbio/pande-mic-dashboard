@@ -1,0 +1,15 @@
+.graph{
+    max-width:100%;
+}
+.no_underline{
+    text-decoration:none !important;
+    color: inherit;
+}
+.no_underline:hover{
+    text-decoration:none !important;
+    color: inherit;
+}
+
+.load{
+    background-color: white;
+}
