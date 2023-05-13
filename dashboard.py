@@ -18,6 +18,8 @@ import argparse
 parser = argparse.ArgumentParser(description='Flask-app dashboard for pande-mic.')
 parser.add_argument('--summary_path', help='full path to summary directory', required=True)
 parser.add_argument('--config_path', help='full path to config directory', required=True)
+parser.add_argument('--reference', help='path to reference, if it is not in config directory named ref.fasta')
+parser.add_argument('--amplicons', help='path to amplicon scheme, if it is not in config directory named amplicons.json')
 parser.add_argument('--run_name', help='run name or ID', default="unknown", required=True)
 parser.add_argument('--smoothing_window_size', help='window size used for smoothing of coverage graphs', default="10")
 parser.add_argument('--smoothing_window_step', help='step between smoothing windows for coverage graphs (calculating madians for each position might be slow)', default="10")
@@ -36,6 +38,14 @@ smooth = int(args.smoothing_window_size)
 smooth_step = int(args.smoothing_window_step)
 cutoff_low = int(args.low_cutoff)
 cutoff_high = int(args.high_cutoff)
+if args.reference:
+    reference = args.reference
+else:
+    reference = config_full_path+"ref.fasta"
+if args.amplicons:
+    amplicons = args.amplicons
+else:
+    amplicons = config_full_path+"amplicons.json"
 coverage_cutoff_isset = False
 if args.coverage_cutoff:
     coverage_cutoff_isset = True
@@ -46,7 +56,7 @@ specified_port = args.port
 
 app = Flask(__name__)
 
-datastore = Datastore(summary_full_path, config_full_path, run_name, smooth, smooth_step)
+datastore = Datastore(summary_full_path, config_full_path, run_name, reference, amplicons, smooth, smooth_step)
 
 @app.route('/')
 def index():

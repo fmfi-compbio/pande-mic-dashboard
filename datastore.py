@@ -8,7 +8,7 @@ import time
 
 
 class Datastore:
-    def __init__(self, summary_path, config_path, run_name, smoothing_window_size, smoothing_window_step):
+    def __init__(self, summary_path, config_path, run_name, reference, ampliconsjson,  smoothing_window_size, smoothing_window_step):
         self.summary_path = summary_path
         self.config_path = config_path
         self.sorted_barcodes = []
@@ -34,6 +34,8 @@ class Datastore:
         self.amplicon_pools = []
         self.mapped_reads = {}
         self.color_picker_pos = 0
+        self.reference = reference
+        self.ampliconsjson = ampliconsjson
         self.colors = ['#e82c17', '#e8b417', '#2d851d', '#1d857e', '#162b73', '#411a6e', '#6e1a66', '#4f0814', '#3D81B8', '#33995F', '#A8384F', '#C7C557', '#C69453', '#4E2267', '#302A7E', '#1D4258', '#194D1A', '#8244C1', '#5C391F', '#602038', '#67C95E', '#3E55BB', '#267329', '#D98C8C', '#4FC4C0', '#B83DB6', '#090A1B', '#627CCB', '#2A687E']
 
 ####################################################################################
@@ -57,7 +59,7 @@ class Datastore:
         return self.ref_length
 
     def read_ref_from_file(self):
-        with open(self.config_path+"ref.fasta", 'r') as f:
+        with open(self.reference, 'r') as f:
             self.ref_name = f.readline() #reference genome
             self.ref = f.readline().strip()[1:]
             self.ref_length = len(self.ref)
@@ -309,14 +311,14 @@ class Datastore:
         return self.amplicons
 
     def read_amplicons(self):
-        f = open(self.config_path+'amplicons.json')
+        f = open(self.ampliconsjson)
         data = json.load(f)
         int_start_end = [ [int(a[0]), int(a[1])] for a in data["amplicons"] ]
         self.amplicons = int_start_end
         return self.amplicons
 
     def create_amplicon_data(self,trim=20, ignore_unclassified=True):
-        f = open(self.config_path+'amplicons.json')
+        f = open(self.ampliconsjson)
         data = json.load(f)
         amplicon_captions = [] 
         for i in range(len(data['amplicons'])):
