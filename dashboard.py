@@ -234,6 +234,8 @@ def mapped_and_processed_reads():
     sorted_barcodes = datastore.get_barcodes()
     if len(sorted_barcodes)==1:
         fig_y_size = 2
+    elif len(sorted_barcodes)<5:
+        fig_y_size = 3
     elif len(sorted_barcodes)<96:
         fig_y_size = 0.2*len(sorted_barcodes)
     else:
@@ -279,6 +281,8 @@ def barcode_amplicon_graph():
     global datastore
     sorted_barcodes = datastore.get_barcodes()
     if len(sorted_barcodes)==1:
+        fig_y_size = 3
+    elif len(sorted_barcodes)<5:
         fig_y_size = 3
     elif len(sorted_barcodes)<96:
         fig_y_size = 0.3*len(sorted_barcodes)
