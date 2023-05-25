@@ -214,10 +214,16 @@ def read_depth_plotly():
                 line=dict(color=data_colors[barcode])))
         add_variant_vlines()
 
+
     padding = (max_value-min_value)/50
+#    padding = 0
     coverage_cutoff()
+
     draw_amplicons()
-    
+
+#    fig.update_yaxes(type="log")
+#    fig.update_yaxes(range=[1, 50000])
+
     return plotly.io.to_html(fig, full_html=False)
 
 
@@ -236,6 +242,8 @@ def mapped_and_processed_reads():
         fig_y_size = 2
     elif len(sorted_barcodes)<5:
         fig_y_size = 3
+    elif len(sorted_barcodes)<10:
+        fig_y_size = 5
     elif len(sorted_barcodes)<96:
         fig_y_size = 0.2*len(sorted_barcodes)
     else:
@@ -284,12 +292,14 @@ def barcode_amplicon_graph():
         fig_y_size = 3
     elif len(sorted_barcodes)<5:
         fig_y_size = 3
+    elif len(sorted_barcodes)<10:
+        fig_y_size = 5
     elif len(sorted_barcodes)<96:
         fig_y_size = 0.3*len(sorted_barcodes)
     else:
         fig_y_size = 10
     fig, ax = plt.subplots(figsize=(5,fig_y_size))
-    draw_barcode_amplicon_graph(fig,ax,50)
+    draw_barcode_amplicon_graph(fig,ax,250)
     fig.savefig("./static/img/barcode_amplicon.png")
     plt.close()
     return "/static/img/barcode_amplicon.png"

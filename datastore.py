@@ -317,13 +317,17 @@ class Datastore:
         self.amplicons = int_start_end
         return self.amplicons
 
-    def create_amplicon_data(self,trim=20, ignore_unclassified=True):
+    def int_before_dash(amp):
+        amp_split = amp.split("-")
+        return int(amp_split[0])
+
+    def create_amplicon_data(self,trim=500, ignore_unclassified=True):
         f = open(self.ampliconsjson)
         data = json.load(f)
         amplicon_captions = [] 
-        for i in range(len(data['amplicons'])):
-            amplicon_captions.append(str(data['amplicons'][i][0])+"-"+str(data['amplicons'][i][1]))
-        amplicons = data['amplicons']
+        amplicons = sorted(data['amplicons'])
+        for i in range(len(amplicons)):
+            amplicon_captions.append(str(amplicons[i][0])+"-"+str(amplicons[i][1]))
         if not ignore_unclassified:
             barcode_captions = self.sorted_barcodes
         else:
